@@ -1,2 +1,1 @@
-# wpmak2com
-Custom WordPress theme for the agency
+# wp-wc-bd
