@@ -8,8 +8,9 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
-        <header id="header">
-            <?php get_template_part('template-parts/header/nav-menu'); ?>
-            <?php get_template_part('template-parts/header/woo-menu'); ?>
+        <header id="header" class="py-1 px-4">
+            <?php get_template_part('template-parts/header/header-banner') ?>
+            <?php get_template_part('template-parts/header/header-main') ?>
+            <?php get_template_part('template-parts/header/header-sub') ?>
         </header>
         <div id="content">

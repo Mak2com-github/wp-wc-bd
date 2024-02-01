@@ -5,7 +5,7 @@
 get_header();
 ?>
 
-<div class="acceuil-page">
+<div class="accueil-page">
 
 </div>
 

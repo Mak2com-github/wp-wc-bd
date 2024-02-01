@@ -15,8 +15,8 @@ module.exports = {
         'deep-green': '#164544',
       },
       fontFamily: {
-        'sans': ['Font Sans'],
-        'title': ['Font Title'],
+        'sans': ['New Herotic', ...defaultTheme.fontFamily.sans],
+        'title': ['Commuters Sans', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         xs: '0.85rem', // 13.6px
