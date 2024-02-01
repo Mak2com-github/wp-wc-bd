@@ -15,10 +15,11 @@ module.exports = {
         'deep-green': '#164544',
       },
       fontFamily: {
-        'sans': ['New Herotic', ...defaultTheme.fontFamily.sans],
-        'title': ['Commuters Sans', ...defaultTheme.fontFamily.sans],
+        'sans': ['new-hero', ...defaultTheme.fontFamily.sans],
+        'title': ['commuters-sans', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
+        xxs: '0.65rem', // 10.8px
         xs: '0.85rem', // 13.6px
         sm: '1rem', // 16px
         base: '1.2rem', // 18px

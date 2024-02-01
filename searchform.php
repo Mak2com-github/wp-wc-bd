@@ -1,4 +1,4 @@
-<form id="headerSearchField" class="search-form flex flex-row px-4 py-2 my-4 mx-auto relative group overflow-hidden border border-black w-fit" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
+<form id="headerSearchField" class="search-form bg-white flex flex-row px-4 py-1 my-4 mx-auto relative group overflow-hidden border border-black w-full" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
     <label for="search-input" class="block relative z-[5] mr-2">
         <span class="screen-reader-text hidden"><?php _e('Search for:', 'text-domain'); ?></span>
         <input type="search" id="search-input" class="search-input px-2.5 font-sans font-regular text-xs block focus:outline-0" name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr_x('Que cherchez-vous ?', 'placeholder', 'text-domain'); ?>" autocomplete="off">
