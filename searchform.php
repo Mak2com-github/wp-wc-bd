@@ -1,9 +1,9 @@
-<form id="headerSearchField" class="search-form bg-white flex flex-row px-4 py-1 my-4 mx-auto relative group overflow-hidden border border-black w-full" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
-    <label for="search-input" class="block relative z-[5] mr-2">
+<form id="headerSearchField" class="search-form bg-white flex flex-row px-4 py-1 my-4 mx-auto lg:ml-0 lg:mr-auto relative group overflow-hidden border border-black w-full lg:w-3/5" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
+    <label for="search-input" class="block relative z-[5] mr-2 lg:w-11/12">
         <span class="screen-reader-text hidden"><?php _e('Search for:', 'text-domain'); ?></span>
-        <input type="search" id="search-input" class="search-input px-2.5 font-sans font-regular text-xs block focus:outline-0" name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr_x('Que cherchez-vous ?', 'placeholder', 'text-domain'); ?>" autocomplete="off">
+        <input type="search" id="search-input" class="search-input px-2.5 font-sans font-regular text-xs block focus:outline-0 leading-6" name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr_x('Que cherchez-vous ?', 'placeholder', 'text-domain'); ?>" autocomplete="off">
     </label>
-    <button type="submit" class="search-submit relative z-[6] bg-white">
+    <button type="submit" class="search-submit relative z-[6] bg-white lg:w-1/12">
         <span class="screen-reader-text"><?php _e('Search Button', 'text-domain'); ?></span>
         <span class="search-icon">
 			<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

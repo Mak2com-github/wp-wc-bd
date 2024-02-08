@@ -8,9 +8,9 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
-        <header id="header" class="fixed top-0 left-0 right-0 z-[999] lg:py-1 lg:px-4">
-            <?php get_template_part('template-parts/header/header-banner') ?>
-            <?php get_template_part('template-parts/header/header-main') ?>
-            <?php get_template_part('template-parts/header/header-sub') ?>
+        <header id="header" class="relative top-0 left-0 right-0 z-[999] lg:bg-white transition-all duration-300 ease-in-out">
+            <?php get_template_part('template-parts/header/header-banner'); ?>
+            <?php get_template_part('template-parts/header/header-main'); ?>
+            <?php get_template_part('template-parts/header/header-sub'); ?>
         </header>
         <div id="content">

@@ -17,10 +17,32 @@ Text Domain: mak2com
 :root {
     --light-green: #6FBA81;
     --deep-green: #164544;
+    --light-grey: #F6F6F6;
+    --deep-grey: #797979;
 }
 
 .span-light span {
+    font-weight: 400;
+}
+.span-thin span {
     font-weight: 200;
+}
+.span-block span {
+    display: block;
+}
+.text-margin p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.span-little-triangle-green-light {
+    display: inline-block;
+    vertical-align: super;
+    margin-left: -5px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid var(--light-green);
 }
 .title-triangle-green-light:after {
     width: 0;
@@ -32,24 +54,75 @@ Text Domain: mak2com
     right: 1rem;
     top: 25%;
 }
-
+.eyed-cursor:hover {
+    cursor: url('./assets/img/lookup-cursor.png'), auto;
+}
+.clip-hexagon:before {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+#header.deployed .header-devis {
+    opacity: 0;
+}
+.accordeon.deployed {
+    height: auto;
+    opacity: 1;
+}
+.animate__in {
+    animation: opacity-in 0.3s ease-in-out forwards;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+}
+.animate__out {
+    animation: opacity-out 0.3s ease-in-out forwards;
+}
+@keyframes opacity-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes opacity-out {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 /* HEADER */
-#primary-menu {
-    position: relative;
-}
-#primary-menu .menu-item-has-children .sub-menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translateX(100%);
-}
-#primary-menu > .menu-item,
-#menu-secondaire > .menu-item {
-    margin: 0.25rem 0;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--light-green);
+@media screen and (max-width: 1024px) {
+    .header-logo img {
+        max-width: 125px;
+    }
+    #primary-menu .menu-item-has-children .sub-menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateX(100%);
+        background-color: white;
+        padding: 3rem 2rem;
+        z-index: 50;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #primary-menu > .menu-item,
+    #menu-secondaire > .menu-item {
+        margin: 0.25rem 0;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--light-green);
+    }
+
+    .sub-menu > .menu-item {
+        margin: 0.25rem 0;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--light-green);
+    }
 }
 #primary-menu > .menu-item:last-child {
     margin-bottom: 0;
@@ -68,6 +141,7 @@ Text Domain: mak2com
 #menu-secondaire .menu-item > a span {
     font-weight: 300;
 }
+
 .nav-triangle-green-light {
     width: 0;
     height: 0;
@@ -75,7 +149,149 @@ Text Domain: mak2com
     border-right: 5px solid transparent;
     border-bottom: 11px solid var(--light-green);
     position: absolute;
-    right: 1rem;
-    transform: rotate(90deg);
-    top: 25%;
+}
+@media screen and (min-width: 1024px) {
+    #site-navigation {
+        display: block;
+        height: 100%;
+    }
+    #site-navigation .menu-principal-container {
+        display: block;
+        height: 100%;
+    }
+    #site-navigation .menu-principal-container #primary-menu {
+        height: 100%;
+    }
+    #primary-menu,
+    #menu-secondaire {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #primary-menu > .menu-item > a,
+    #menu-secondaire > .menu-item > a {
+        z-index: 40;
+        font-size: 13px;
+        padding: 0.5rem 0 0.75rem 0;
+        margin: 0 1rem;
+        position: relative;
+        height: 100%;
+    }
+    #primary-menu > .menu-item > a:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--deep-green);
+        transition: all 0.3s ease-in-out;
+    }
+    #primary-menu > .menu-item > a:hover:after {
+        width: 100%;
+    }
+    #primary-menu .sub-menu {
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        background-color: var(--light-grey);
+        transition: all 0.3s ease-in-out;
+        height: 0;
+        overflow: hidden;
+        transform: translateY(-100%);
+    }
+    #primary-menu > .menu-item:hover .sub-menu-container {
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+    }
+    #primary-menu > .menu-item:hover .sub-menu-container .sub-menu {
+        transform: translateY(0);
+        height: auto;
+        padding: 2rem 10% 4rem;
+    }
+    #primary-menu .sub-menu .menu-item {
+        width: 40%;
+        margin: 1rem 0;
+    }
+    #primary-menu .sub-menu .menu-item a {
+        font-size: 13px;
+        width: fit-content;
+        padding: 0.25rem;
+    }
+    #primary-menu .sub-menu .menu-item a:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--deep-green);
+        transition: all 0.3s ease-in-out;
+    }
+    #primary-menu .sub-menu .menu-item a:hover:after {
+        width: 100%;
+    }
+}
+
+/* BIDEANTRAIL - QUI SOMMES-NOUS */
+@media screen and (max-width: 1024px) {
+    .bideantrail-section-3-list ul {
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        margin-left: auto;
+        margin-bottom: 2rem;
+    }
+    .bideantrail-section-3-list ul li {
+        padding: 0.25rem 0 0.25rem 2.5rem;
+        font-family: 'new-hero', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        position: relative;
+    }
+    .bideantrail-section-3-list ul li:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 25%;
+        left: 1rem;
+        width: 12px;
+        height: 12px;
+        background-color: var(--light-green);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .bideantrail-section-3-list p {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-weight: 300;
+    }
+}
+
+/* FOOTER */
+.footer-nav-container .menu-item a {
+    display: block;
+    font-family: "new-hero", san-serif, serif;
+    font-size: 13px;
+    color: var(--deep-grey);
+    line-height: 18px;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+@media screen and (min-width: 1024px) {
+    .footer-nav-container .menu-item a {
+        font-size: 11px;
+        font-weight: 500;
+    }
+}
+.footer-nav-container .menu-item a:hover {
+    color: var(--deep-green);
 }

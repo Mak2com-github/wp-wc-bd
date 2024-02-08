@@ -11,12 +11,15 @@ module.exports = {
       colors: {
         'classic-white': '#FFFFFF',
         'light-grey': '#F6F6F6',
+        'medium-grey': '#D9D9D9',
+        'deep-grey': '#797979',
         'light-green': '#6FBA81',
         'deep-green': '#164544',
+        'light-dark': "#333333",
       },
       fontFamily: {
-        'sans': ['new-hero', ...defaultTheme.fontFamily.sans],
-        'title': ['commuters-sans', ...defaultTheme.fontFamily.sans],
+        'sans': ['"new-hero"', ...defaultTheme.fontFamily.sans],
+        'title': ['"commuters-sans"', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         xxs: '0.65rem', // 10.8px
@@ -34,14 +37,23 @@ module.exports = {
       },
       height: {
         '10vh': '10vh',
+        '10vw': '10vw',
         '20vh': '20vh',
+        '20vw': '20vw',
         '30vh': '30vh',
+        '30vw': '30vw',
         '40vh': '40vh',
+        '40vw': '40vw',
         '50vh': '50vh',
+        '50vw': '50vw',
         '60vh': '60vh',
+        '60vw': '60vw',
         '70vh': '70vh',
+        '70vw': '70vw',
         '80vh': '80vh',
+        '80vw': '80vw',
         '90vh': '90vh',
+        '90vw': '90vw',
         '100vh': '100vh',
       },
       backgroundColor: {
@@ -50,6 +62,7 @@ module.exports = {
       backgroundImage: {
         'black-gradient': 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);',
         'black-gradient-soft': 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.70) 100%);',
+        'green-gradient': 'linear-gradient(90deg, #164544 0%, #6FBA81 100%)',
       },
       backgroundSize: {
         '100%': '100%',

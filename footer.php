@@ -2,18 +2,13 @@
 /*
  * The main footer
  */
-
-// Obtenir l'ID de la page actuelle
-$current_page_id = get_the_ID();
-// Obtenir l'ID de la page parente
-$parent_id = wp_get_post_parent_id($current_page_id);
 ?>
-            </div><!-- #content -->
-        <footer id="footer" class="footer block overflow-x-clip relative z-[50]">
-            <?= get_template_part('template-parts/footer/footer-before'); ?>
-	        <?= get_template_part('template-parts/footer/footer-reassurance') ?>
-            <div class="">
             </div>
+        <footer id="footer" class="footer relative flex flex-col pt-8">
+            <div class="absolute inset-0 bg-cover bg-no-repeat bg-center z-[-1] opacity-30" style="background-image: url('<?= get_stylesheet_directory_uri() ?>/assets/img/patterns/footer-background-mountains.webp');"></div>
+            <?php get_template_part('template-parts/footer/footer-pre'); ?>
+	        <?php get_template_part('template-parts/footer/footer-nav'); ?>
+	        <?php get_template_part('template-parts/footer/footer-sub'); ?>
         </footer>
         <?php wp_footer(); ?>
     </body>
