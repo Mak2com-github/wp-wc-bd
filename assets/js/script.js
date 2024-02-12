@@ -105,21 +105,20 @@ function fixedHeaderOnScroll() {
         }
     })
 }
-function footerAccordeon() {
-    var footerNavBlocs = document.querySelectorAll('.footer-nav-block')
-    footerNavBlocs.forEach(function(block) {
-        const tab = block.children[0]
-        const body = block.children[1]
-        accordeonSystem(tab, body)
-    })
-}
-function accordeonSystem(tab, body) {
-    tab.addEventListener('click', function() {
-        if (body.classList.contains('deployed')) {
-            body.classList.remove('deployed')
-        } else {
-            body.classList.add('deployed')
-        }
+function accordeonSystem() {
+    var accordeons = document.querySelectorAll('.accordeon')
+    accordeons.forEach(function(accordeon) {
+        const tabs = accordeon.querySelectorAll('.accordeon-head')
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function(event) {
+                event.stopPropagation();
+                if (accordeon.classList.contains('deployed')) {
+                    accordeon.classList.remove('deployed')
+                } else {
+                    accordeon.classList.add('deployed')
+                }
+            })
+        })
     })
 }
 function subMenuContainer() {
@@ -129,7 +128,7 @@ function subMenuContainer() {
         const container = document.createElement('div')
         const subMenuParent = subMenu.parentElement
         var headerHeight = header.offsetHeight
-        container.setAttribute("class", "sub-menu-container fixed top-[" + headerHeight + "px] overflow-hidden h-auto left-0 right-0 ")
+        container.setAttribute("class", "sub-menu-container fixed top-[" + headerHeight + "px] overflow-hidden transition-all duration-300 ease-in-out h-auto left-0 right-0 ")
         container.appendChild(subMenu)
         subMenuParent.appendChild(container)
     })
@@ -138,12 +137,12 @@ function subMenuContainer() {
 document.addEventListener("DOMContentLoaded", () => {
     let body = document.querySelector("body");
     fixedHeaderOnScroll()
+    accordeonSystem()
     if (window.matchMedia("(min-width: 1024px)").matches) {
         subMenuContainer()
     }
     if (window.matchMedia("(max-width: 1024px)").matches) {
         navItems()
         toggleBurgerMenu(body)
-        footerAccordeon()
     }
 })

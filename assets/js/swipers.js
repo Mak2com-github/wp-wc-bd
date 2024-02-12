@@ -35,8 +35,11 @@ function partnersSwiper() {
 
 document.addEventListener("DOMContentLoaded", () => {
   let body = document.querySelector("body");
+  const partners = document.querySelector('.partners-component')
   if (body.classList.contains('home')) {
     productsHighlightSwiper()
+  }
+  if (partners) {
     partnersSwiper()
   }
 })

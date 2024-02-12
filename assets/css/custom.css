@@ -63,9 +63,12 @@ Text Domain: mak2com
 #header.deployed .header-devis {
     opacity: 0;
 }
-.accordeon.deployed {
+.accordeon.deployed .accordeon-body {
     height: auto;
     opacity: 1;
+}
+.accordeon.deployed .accordeon-arrow {
+    transform: rotate(0);
 }
 .animate__in {
     animation: opacity-in 0.3s ease-in-out forwards;
@@ -240,41 +243,60 @@ Text Domain: mak2com
 }
 
 /* BIDEANTRAIL - QUI SOMMES-NOUS */
+
+.bideantrail-section-list ul {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-left: auto;
+    margin-bottom: 2rem;
+}
 @media screen and (max-width: 1024px) {
-    .bideantrail-section-3-list ul {
+    .bideantrail-section-list ul {
         height: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         width: 50%;
-        margin-left: auto;
-        margin-bottom: 2rem;
     }
-    .bideantrail-section-3-list ul li {
-        padding: 0.25rem 0 0.25rem 2.5rem;
-        font-family: 'new-hero', sans-serif;
-        font-size: 16px;
-        font-weight: 500;
-        position: relative;
-    }
-    .bideantrail-section-3-list ul li:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 25%;
-        left: 1rem;
-        width: 12px;
-        height: 12px;
-        background-color: var(--light-green);
-        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    }
-    .bideantrail-section-3-list p {
-        text-align: center;
-        margin-bottom: 1rem;
-        font-weight: 300;
+    .page-template-pro-section .bideantrail-section-list ul {
+        height: auto;
+        width: 100%;
     }
 }
-
+.bideantrail-section-list ul li {
+    padding: 0.25rem 0 0.25rem 2.5rem;
+    font-family: 'new-hero', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+}
+.bideantrail-section-list ul li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 1rem;
+    width: 12px;
+    height: 12px;
+    background-color: var(--light-green);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.bideantrail-section-list p {
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+@media screen and (max-width: 1024px) {
+    .bideantrail-section-list p {
+        text-align: center;
+    }
+    .page-template-pro-section .bideantrail-section-list p {
+        text-align: left;
+    }
+    .page-template-pro-section .bideantrail-section-list p:last-of-type {
+        margin-bottom: 300px;
+    }
+}
 /* FOOTER */
 .footer-nav-container .menu-item a {
     display: block;

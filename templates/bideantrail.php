@@ -57,7 +57,7 @@ get_header();
         ?>
     </div>
 
-    <div class="relative z-[5] bg-light-grey flex flex-col-reverse pt-32">
+    <div class="relative z-[5] bg-light-grey flex flex-col-reverse lg:flex-row lg:justify-between pt-32">
         <?php
         if (have_rows('section_3')) :
             while (have_rows('section_3')) : the_row();
@@ -67,11 +67,11 @@ get_header();
 
                 if (!empty($image['url'])) {
                     ?>
-                    <div class="absolute top-[222px] left-0 w-1/2 h-[250px] bg-cover bg-no-repeat bg-center" style="background-image: url('<?= $image['url'] ?>')"></div>
+                    <div class="absolute lg:static top-[222px] lg:top-auto left-0 w-1/2 h-[250px] bg-cover bg-no-repeat bg-center lg:block lg:my-auto" style="background-image: url('<?= $image['url'] ?>')"></div>
                 <?php } ?>
-                <div class="flex flex-col w-full px-4 py-8">
-                    <h2 class="w-fit relative mx-auto mb-8 block font-title text-deep-green text-center text-xl2 font-black uppercase pb-1 leading-6 border-b-2 border-light-green span-light after:content-[''] after:absolute after:h-0 after:border-l-4 after:border-l-transparent after:border-r-4 after:border-r-transparent after:border-b-8 after:border-b-light-green after:right-0 after:top-0"><?php if (!empty($title)) echo $title; ?></h2>
-                    <div class="font-sans text-black text-xs bideantrail-section-3-list">
+                <div class="flex flex-col w-full px-4 py-8 lg:w-[45%] lg:pr-[5%]">
+                    <h2 class="w-fit relative mx-auto lg:ml-0 mb-8 block font-title text-deep-green text-center text-xl2 font-black uppercase pb-1 leading-6 border-b-2 border-light-green span-light after:content-[''] after:absolute after:h-0 after:border-l-4 after:border-l-transparent after:border-r-4 after:border-r-transparent after:border-b-8 after:border-b-light-green after:right-0 after:top-0"><?php if (!empty($title)) echo $title; ?></h2>
+                    <div class="font-sans text-black text-xs bideantrail-section-list">
                         <?php if (!empty($text)) echo $text; ?>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ get_header();
         ?>
     </div>
 
-    <div class="py-8 px-4">
+    <div class="py-8 lg:py-20 px-4 lg:px-[10%]">
         <?php
         if (have_rows('section_4')) :
             while (have_rows('section_4')) : the_row();
@@ -92,13 +92,13 @@ get_header();
             $link = get_sub_field('link');
             ?>
             <div>
-                <h2 class="w-fit font-title text-deep-green font-black text-xl uppercase mb-8 pb-2 leading-7 border-b-2 border-b-light-green"><?php if (!empty($title)) echo $title; ?></h2>
+                <h2 class="w-fit lg:mx-auto font-title text-deep-green font-black text-xl uppercase mb-8 pb-2 leading-7 border-b-2 border-b-light-green"><?php if (!empty($title)) echo $title; ?></h2>
             </div>
-            <div class="flex flex-col-reverse">
+            <div class="flex flex-col-reverse lg:flex-row">
                 <?php if (!empty($image['url'])) { ?>
-                <div class="bg-contain bg-no-repeat bg-center w-[200px] h-[180px] mx-auto my-8" style="background-image: url('<?= $image['url'] ?>')"></div>
+                <div class="bg-contain bg-no-repeat bg-center w-[200px] lg:w-[280px] h-[180px] lg:h-[240px] mx-auto my-8" style="background-image: url('<?= $image['url'] ?>')"></div>
                 <?php } ?>
-                <ul class="flex flex-col">
+                <ul class="flex flex-col lg:w-4/6 lg:max-w-[800px]">
                     <?php
                     if (have_rows('list_repeater')) :
                         while (have_rows('list_repeater')) : the_row();
@@ -115,7 +115,7 @@ get_header();
                     ?>
                 </ul>
             </div>
-            <div>
+            <div class="lg:mt-16">
                 <div class="font-sans text-center text-sm text-black">
                     <?php if (!empty($textBeforeLink)) echo $textBeforeLink; ?>
                 </div>
@@ -131,7 +131,7 @@ get_header();
 
     <?php get_template_part('template-parts/components/reassurance'); ?>
 
-    <div class="bg-white px-4 pt-8 pb-12 relative">
+    <div class="bg-white px-4 pt-8 pb-12 relative lg:flex lg:flex-row lg:justify-center">
         <?php
         if (have_rows('collections_group')) :
             while (have_rows('collections_group')) : the_row();
@@ -139,11 +139,11 @@ get_header();
             $title = get_sub_field('title');
             $link = get_sub_field('link');
             ?>
-            <div class="absolute top-28 left-[10%] w-[80%] h-[200px] bg-cover bg-no-repeat bg-center" style="background-image: url('<?= $image['url'] ?>')"></div>
-            <div>
-                <h2 class="font-title w-fit mx-auto text-deep-green font-black text-xl uppercase mb-[250px] pb-2 text-center leading-7 *:block *:font-thin"><?php if (!empty($title)) echo $title; ?></h2>
+            <div class="absolute lg:static lg:top-auto lg:left-auto top-28 left-[10%] w-[80%] lg:w-[430px] h-[200px] lg:h-[350px] bg-cover bg-no-repeat bg-center" style="background-image: url('<?= $image['url'] ?>')"></div>
+            <div class="lg:w-[40%] lg:pl-20 lg:flex lg:flex-col lg:justify-center">
+                <h2 class="font-title w-fit mx-auto lg:ml-0 text-deep-green font-black text-xl uppercase mb-[250px] lg:mb-0 pb-2 text-center lg:text-left leading-7 *:block *:font-thin"><?php if (!empty($title)) echo $title; ?></h2>
                 <div>
-                    <a class="relative py-2 px-8 mt-4 block mx-auto w-fit font-title font-bold text-center bg-light-green text-white text-xxs uppercase before:content-[''] before:absolute before:inset-0 before:bg-transparent before:border before:border-light-green before:transition-transform before:duration-300 before:ease-in-out before:translate-x-1 before:translate-y-1 hover:before:translate-x-0 hover:before:translate-y-0" href="<?php if (!empty($link)) echo $link; ?>">Découvrir</a>
+                    <a class="relative py-2 px-8 mt-4 block mx-auto lg:ml-0 w-fit font-title font-bold text-center bg-light-green text-white text-xxs uppercase before:content-[''] before:absolute before:inset-0 before:bg-transparent before:border before:border-light-green before:transition-transform before:duration-300 before:ease-in-out before:translate-x-1 before:translate-y-1 hover:before:translate-x-0 hover:before:translate-y-0" href="<?php if (!empty($link)) echo $link; ?>">Découvrir</a>
                 </div>
             </div>
             <?php

@@ -15,27 +15,27 @@
         </ul>
     </div>
     <div class="footer-nav-section flex flex-col px-4 lg:flex-row lg:justify-between lg:w-4/6">
-        <div class="footer-nav-block flex flex-col justify-start">
-            <p class="relative transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">Pour Organisateurs <span class="absolute h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
-            <div class="accordeon *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
+        <div class="accordeon flex flex-col justify-start">
+            <p class="relative accordeon-head transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">Pour Organisateurs <span class="absolute accordeon-arrow transition-all duration-300 ease-in-out h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
+            <div class="accordeon-body *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
                 <?php wp_nav_menu( array( 'menu' => 'Footer - Organisateurs' ) ); ?>
             </div>
         </div>
-        <div class="footer-nav-block flex flex-col justify-start">
-            <p class="relative transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">Pour Runners <span class="absolute h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
-            <div class="accordeon *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
+        <div class="accordeon flex flex-col justify-start">
+            <p class="relative accordeon-head transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">Pour Runners <span class="absolute accordeon-arrow transition-all duration-300 ease-in-out h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
+            <div class="accordeon-body *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
                 <?php wp_nav_menu( array( 'menu' => 'Footer - Runners' ) ); ?>
             </div>
         </div>
-        <div class="footer-nav-block flex flex-col justify-start">
-            <p class="relative transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">BideanTrail <span class="absolute h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
-            <div class="accordeon *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
+        <div class="accordeon flex flex-col justify-start">
+            <p class="relative accordeon-head transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">BideanTrail <span class="absolute accordeon-arrow transition-all duration-300 ease-in-out h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
+            <div class="accordeon-body *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
                 <?php wp_nav_menu( array( 'menu' => 'Footer - Bideantrail' ) ); ?>
             </div>
         </div>
-        <div class="footer-nav-block flex flex-col justify-start">
-            <p class="relative transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">Compte Client <span class="absolute h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
-            <div class="accordeon *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
+        <div class="accordeon flex flex-col justify-start">
+            <p class="relative accordeon-head transition-colors duration-300 ease-in-out font-sans text-base lg:text-xs text-deep-green hover:text-light-green lg:hover:text-deep-green leading-7 lg:leading-5 py-2 font-bold capitalize px-2 mb-2 border-b lg:border-0 border-light-green cursor-pointer lg:cursor-auto">Compte Client <span class="absolute accordeon-arrow transition-all duration-300 ease-in-out h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-[14px] border-b-deep-green right-2 top-1/3 rotate-180 lg:hidden"></span></p>
+            <div class="accordeon-body *:font-sans *:text-xxs *:text-deep-grey *:font-regular *:leading-5 px-2 footer-nav-container transition-opacity duration-300 ease-in-out h-0 lg:h-auto opacity-0 lg:opacity-100 overflow-hidden">
                 <ul>
                     <li class="menu-item">
                         <a href="<?= get_permalink(3083) ?>">Connexion</a>

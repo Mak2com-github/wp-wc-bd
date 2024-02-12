@@ -63,9 +63,11 @@ module.exports = {
         'black-gradient': 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);',
         'black-gradient-soft': 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.70) 100%);',
         'green-gradient': 'linear-gradient(90deg, #164544 0%, #6FBA81 100%)',
+        'dashed-line': "linear-gradient(to right, #000 50%, transparent 0%)",
       },
       backgroundSize: {
         '100%': '100%',
+        '25x2': '25px 2px',
       },
       keyframes: {
       },
@@ -79,6 +81,7 @@ module.exports = {
         '20_center': '20% center',
         '25_center': '25% center',
         'center_-12rem': 'center -12rem',
+        'bottom': 'bottom',
       },
       boxShadow: {
         'shadow-light': '0 4px 4px 0 rgba(0, 0, 0, 0.20)',

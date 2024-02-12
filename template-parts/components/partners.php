@@ -1,4 +1,4 @@
-<div class="py-8">
+<div class="py-8 partners-component">
     <?php
     if (have_rows('references_group')) :
         while (have_rows('references_group')) : the_row();
