@@ -133,6 +133,73 @@ function subMenuContainer() {
         subMenuParent.appendChild(container)
     })
 }
+function productConfigurationForm() {
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener('change', function() {
+            console.log()
+            document.querySelectorAll('input[type="radio"][name="'+ input.name +'"]').forEach(input => {
+                input.removeAttribute('checked')
+                input.parentElement.classList.remove('bg-light-green-opacity')
+            })
+            this.setAttribute('checked', '');
+            this.parentElement.classList.add('bg-light-green-opacity')
+        })
+    })
+}
+function productConfigurationInfosBox() {
+    const infoButtons = document.querySelectorAll('.infos-button');
+    const closeButtons = document.querySelectorAll('.close-info-btn');
+    const infoBoxes = document.querySelectorAll('.field-infos');
+
+    function closeAllInfoBoxes() {
+        infoBoxes.forEach(box => {
+            if (window.matchMedia('(min-width: 1024px)').matches) {
+                box.classList.add('lg:translate-x-[150%]');
+                box.classList.remove('lg:translate-x-0');
+            } else {
+                box.classList.add('translate-y-[100%]');
+                box.classList.remove('translate-y-0');
+            }
+        });
+    }
+    infoButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            closeAllInfoBoxes();
+            const infoBox = this.closest('.form-row').querySelector('.field-infos');
+            if (window.matchMedia('(min-width: 1024px)').matches) {
+                infoBox.classList.remove('lg:translate-x-[150%]');
+                infoBox.classList.add('lg:translate-x-0');
+            } else {
+                infoBox.classList.remove('translate-y-[100%]');
+                infoBox.classList.add('translate-y-0');
+            }
+        });
+    });
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const infoBox = this.closest('.field-infos');
+            if (window.matchMedia('(min-width: 1024px)').matches) {
+                infoBox.classList.add('lg:translate-x-[150%]');
+                infoBox.classList.remove('lg:translate-x-0');
+            } else {
+                infoBox.classList.add('translate-y-[100%]');
+                infoBox.classList.remove('translate-y-0');
+            }
+        });
+    });
+}
+function moveImageSection() {
+    if (window.matchMedia('(max-width: 1024px)').matches) {
+        const imageSection = document.getElementById('imageSection');
+        const textSection = document.getElementById('textSection');
+        if (textSection) {
+            const firstTextDiv = textSection.children[0];
+            if (imageSection) {
+                textSection.insertBefore(imageSection, firstTextDiv.nextSibling);
+            }
+        }
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     let body = document.querySelector("body");
@@ -144,5 +211,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.matchMedia("(max-width: 1024px)").matches) {
         navItems()
         toggleBurgerMenu(body)
+    }
+    if (body.classList.contains('page-template-expertise')) {
+        moveImageSection()
+    }
+    if (body.classList.contains('single-produit-pro')) {
+        productConfigurationForm()
+        productConfigurationInfosBox()
     }
 })

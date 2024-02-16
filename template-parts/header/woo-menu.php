@@ -16,7 +16,7 @@
             </p>
         </a>
     </div>
-    <button id="headerDevisBtn" class="header-devis transition-opacity duration-300 ease-in-out block lg:mx-2" href="<?= get_permalink(3083) ?>">
+    <button id="headerDevisBtn" onclick="togglePopupDevis()" class="header-devis transition-opacity duration-300 ease-in-out block lg:mx-2" href="<?= get_permalink(3083) ?>">
         <img class="w-[16px] lg:h-[20px] cart-black block lg:inline-block" src="<?= get_stylesheet_directory_uri() ?>/assets/svg/devis-icon.svg" alt="icone du panier">
         <span class="hidden lg:inline-block lg:font-title lg:text-xxs lg:text-black lg:font-regular""><?php _e('Devis','mak2com'); ?></span>
     </button>

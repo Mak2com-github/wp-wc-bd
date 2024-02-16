@@ -1,7 +1,7 @@
 <div class="py-8 partners-component">
     <?php
-    if (have_rows('references_group')) :
-        while (have_rows('references_group')) : the_row();
+    if (have_rows('references_group', 'options')) :
+        while (have_rows('references_group', 'options')) : the_row();
         $title = get_sub_field('title');
         ?>
         <div class="mb-4">

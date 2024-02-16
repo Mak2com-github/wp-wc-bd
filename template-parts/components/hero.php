@@ -8,7 +8,7 @@
         $text = get_sub_field('text');
         ?>
             <div class="<?php if ($text) { echo 'w-4/5'; } else { echo 'w-full';} ?> flex flex-col relative z-[2]">
-                <h1 class="font-title text-white leading-7 mb-4 font-black text-xl lg:text-xl2 uppercase span-light"><?php if ( !empty( $title ) ) echo $title; ?></h1>
+                <h1 class="font-title max-w-[70%] text-white leading-7 mb-4 font-black text-xl lg:text-xl2 uppercase span-light"><?php if ( !empty( $title ) ) echo $title; ?></h1>
                 <?php if ($active === true) : ?>
                 <div class="font-sans text-white leading-5 font-thin text-xs">
                     <?php if ( !empty( $text ) ) echo $text; ?>

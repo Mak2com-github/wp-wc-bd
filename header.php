@@ -13,4 +13,5 @@
             <?php get_template_part('template-parts/header/header-main'); ?>
             <?php get_template_part('template-parts/header/header-sub'); ?>
         </header>
+        <?php get_template_part('template-parts/components/quote'); ?>
         <div id="content">

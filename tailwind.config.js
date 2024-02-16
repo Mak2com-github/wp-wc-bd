@@ -57,7 +57,9 @@ module.exports = {
         '100vh': '100vh',
       },
       backgroundColor: {
+        'black-opacity-20': 'rgba(0,0,0,0.2)',
         'black-opacity': 'rgba(0,0,0,0.4)',
+        'light-green-opacity': 'rgba(111, 186, 129, 0.2)',
       },
       backgroundImage: {
         'black-gradient': 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);',

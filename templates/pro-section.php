@@ -137,7 +137,7 @@ get_header();
         ?>
     </div>
 
-    <div class="pt-32 pb-8 px-4 bg-light-grey relative">
+    <div class="pt-32 pb-8 px-4 bg-light-grey relative graphic-design-section">
         <?php
         if (have_rows('graphic_crea_group')) :
             while (have_rows('graphic_crea_group')) : the_row();

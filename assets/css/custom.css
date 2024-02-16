@@ -60,6 +60,25 @@ Text Domain: mak2com
 .clip-hexagon:before {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
+.custom-hexagon-list ul li {
+    position: relative;
+    padding-left: 2rem;
+}
+@media screen and (min-width: 1024px) {
+    .custom-hexagon-list ul li {
+        margin: 1rem 0;
+    }
+}
+.custom-hexagon-list ul li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 18px;
+    width: 18px;
+    background-color: var(--light-green);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
 #header.deployed .header-devis {
     opacity: 0;
 }
@@ -258,7 +277,7 @@ Text Domain: mak2com
         height: 250px;
         width: 50%;
     }
-    .page-template-pro-section .bideantrail-section-list ul {
+    .graphic-design-section .bideantrail-section-list ul {
         height: auto;
         width: 100%;
     }
@@ -290,13 +309,28 @@ Text Domain: mak2com
     .bideantrail-section-list p {
         text-align: center;
     }
-    .page-template-pro-section .bideantrail-section-list p {
+    .graphic-design-section .bideantrail-section-list p {
         text-align: left;
     }
-    .page-template-pro-section .bideantrail-section-list p:last-of-type {
+    .graphic-design-section .bideantrail-section-list p:last-of-type {
         margin-bottom: 300px;
     }
 }
+
+/* Product Pro - Configuration */
+.form-option {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.form-option input[type="radio"]:checked ~ .checkmark {
+    opacity: 1;
+}
+.form-option input[type="radio"]:checked .form-option {
+    background-color: rgba(111, 186, 129, 0.2);
+}
+
 /* FOOTER */
 .footer-nav-container .menu-item a {
     display: block;

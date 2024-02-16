@@ -8,6 +8,7 @@ function mak2com_theme_enqueue_styles() {
     wp_enqueue_script('swiperjs', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
     wp_enqueue_script('mak2com-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0', true);
     wp_enqueue_script('mak2com-swipers', get_stylesheet_directory_uri() . '/assets/js/swipers.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('mak2com-quotes', get_stylesheet_directory_uri() . '/assets/js/quotations.js', array('jquery'), '1.0', true);
 
 }
 add_action('wp_enqueue_scripts', 'mak2com_theme_enqueue_styles');
