@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.loader-container').style.display = 'none';
   }
 
-  // Fonction pour récupérer et afficher les produits filtrés
   function fetchFilteredProducts(filters, resetPagination = false) {
     showLoader();
     if (resetPagination) {
@@ -29,13 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(data => {
         const productsGrid = document.querySelector('.products-grid');
         if (resetPagination) {
-          productsGrid.innerHTML = data.html; // Remplace les produits existants par les nouveaux filtrés
+          productsGrid.innerHTML = data.html;
         } else {
-          productsGrid.insertAdjacentHTML('beforeend', data.html); // Ajoute les produits chargés à la liste existante
+          productsGrid.insertAdjacentHTML('beforeend', data.html);
         }
-
         if (!data.html.trim().length || currentPage >= data.maxPages) {
-          document.getElementById('load-more-products').style.display = 'none'; // Cache le bouton s'il n'y a plus de produits à charger
+          document.getElementById('load-more-products').style.display = 'none';
         } else {
           document.getElementById('load-more-products').style.display = 'block';
           document.getElementById('load-more-products').setAttribute('data-page', currentPage.toString());
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .catch(error => console.error('Error:', error))
       .finally(() => {
-        hideLoader(); // Masquer le loader une fois la requête terminée
+        hideLoader();
       });
   }
 
@@ -75,14 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
     return filters;
   }
 
-  // Écouteur pour le bouton Appliquer les filtres
   applyFiltersButton.addEventListener('click', function() {
     const filters = getSelectedFilters();
     console.log(filters)
     fetchFilteredProducts(filters, true);
   });
-
-  // Écouteur pour le bouton Réinitialiser les filtres
   resetFiltersButton.addEventListener('click', function() {
     document.querySelectorAll('.filter-option-radio').forEach(input => {
       if (input.type === "radio") {
@@ -95,6 +90,44 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchFilteredProducts({}, true);
   });
 
+  document.querySelectorAll('.rapid_variations_form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var selectedSize = this.querySelector('input[name="variation_size"]:checked');
+      var errorMsg = this.closest('.relative').querySelector('.product-error-msg');
+      var variationId = this.querySelector('.variation_id').value; // Récupérer l'ID de variation sélectionné
+
+      if (!selectedSize) {
+        errorMsg.textContent = 'Veuillez choisir une taille avant d\'ajouter au panier.';
+        errorMsg.classList.add('!translate-y-0');
+      } else {
+        errorMsg.textContent = '';
+        errorMsg.classList.remove('!translate-y-0');
+
+        var data = {
+          action: 'woocommerce_ajax_add_to_cart',
+          product_id: this.querySelector('[name="product_id"]').value,
+          variation_id: variationId,
+        };
+        fetch('/wp-admin/admin-ajax.php', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams(data).toString()
+        })
+          .then(response => response.json())
+          .then(response => {
+            if (response.error && response.product_url) {
+              window.location = response.product_url;
+              return;
+            }
+            console.log('Produit ajouté avec succès');
+          });
+      }
+    });
+  });
 
   document.getElementById('load-more-products').addEventListener('click', function() {
     currentPage++;

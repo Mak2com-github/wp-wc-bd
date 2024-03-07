@@ -22,6 +22,7 @@ module.exports = {
         'title': ['"commuters-sans"', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
+        xs3: '0.5rem', // 8px
         xxs: '0.65rem', // 10.8px
         xs: '0.85rem', // 13.6px
         sm: '1rem', // 16px
@@ -58,6 +59,7 @@ module.exports = {
       },
       backgroundColor: {
         'black-opacity-20': 'rgba(0,0,0,0.2)',
+        'white-opacity-20': 'rgba(255,255,255,0.2)',
         'white-opacity-70': 'rgba(255,255,255,0.7)',
         'black-opacity': 'rgba(0,0,0,0.4)',
         'light-green-opacity': 'rgba(111, 186, 129, 0.2)',

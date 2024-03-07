@@ -20,15 +20,15 @@
         <img class="w-[16px] lg:h-[20px] cart-black block lg:inline-block" src="<?= get_stylesheet_directory_uri() ?>/assets/svg/devis-icon.svg" alt="icone du panier">
         <span class="hidden lg:inline-block lg:font-title lg:text-xxs lg:text-black lg:font-regular""><?php _e('Devis','mak2com'); ?></span>
     </button>
-    <a id="headerCartLink" class="header-cart lg:mx-2" href="<?= wc_get_cart_url() ?>">
+    <button id="headerCartLink" class="header-cart lg:mx-2" onclick="toggleSideCart(this)" aria-label="Panier" aria-selected="false">
         <img class="w-[16px] lg:h-[20px] cart-black block lg:inline-block" src="<?= get_stylesheet_directory_uri() ?>/assets/svg/cart-icon.svg" alt="icone du panier">
-        <p class="hidden lg:inline-block lg:font-title lg:text-xxs lg:text-black lg:font-regular">
+        <span class="hidden lg:inline-block lg:font-title lg:text-xxs lg:text-black lg:font-regular">
             <span><?php _e('Panier','mak2com'); ?></span>
             <span>
             <?php
             $count = WC()->cart->get_cart_contents_count();
             ?>
         </span>
-        </p>
-    </a>
+        </span>
+    </button>
 </div>

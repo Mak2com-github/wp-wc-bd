@@ -24,7 +24,7 @@ get_header(); ?>
     ?>
 </div>
 
-<div class="px-4 lg:flex lg:flex-row lg:flex-wrap lg:justify-center">
+<div class="lg:flex lg:flex-row lg:flex-wrap lg:justify-center">
     <?php
     $introduction = get_field('introduction_text', '3080');
     if ($introduction) :
@@ -33,8 +33,8 @@ get_header(); ?>
         <?= $introduction ?>
     </div>
     <?php endif; ?>
-    <div class="product-filters lg:w-1/4">
-        <div class="product-filters-row flex flex-col py-4 border-b border-deep-green">
+    <div class="product-filters w-full lg:w-1/4">
+        <div class="product-filters-row flex flex-col py-4 relative before:content-[''] before:block before:absolute before:bottom-0 before:w-11/12 before:left-4 before:h-px before:bg-deep-green">
             <div class="hidden lg:flex lg:flex-row lg:justify-between lg:items-center">
                 <p class="mb-2 font-title text-sm font-bold uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150">Genre</p>
                 <button class="product-filters-toggle inline-block group relative w-[20px] h-[20px] focus:outline-none" onclick="toggleFilterRow(this)">
@@ -42,26 +42,32 @@ get_header(); ?>
                     <span class="block w-full h-[2px] bg-deep-green transition-transform duration-300 ease-in-out delay-150 absolute top-1/2 left-0"></span>
                 </button>
             </div>
-            <div class="filter-options">
+            <div class="filter-options w-full px-2 lg:px-0" data-id="1">
+                <div class="filter-wrapper">
                 <?php
                 $sex_terms = get_terms([
                     'taxonomy' => 'pa_sexe',
                     'hide_empty' => true,
                 ]);
-                echo '<label class="filter-option-label m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[\'\'] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:delay-150 before:ease-in-out before:translate-y-[-105%] hover:before:translate-y-0" for="gender_all" onclick="toggleFilter(this)">';
-                    echo '<input type="radio" id="gender_all" name="gender" value="all" class="filter-option-radio" checked>';
-                    echo '<span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 group-hover:text-white">Tous</span>';
-                echo '</label>';
-                foreach ($sex_terms as $term) {
-                    echo '<label class="filter-option-label m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[\'\'] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] hover:before:translate-y-0" for="gender_' . $term->slug . '" onclick="toggleFilter(this)">';
-                        echo '<input type="checkbox" id="gender_' . $term->slug . '" name="gender" value="' . $term->slug . '" class="filter-option-radio hidden">';
-                        echo '<span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 group-hover:text-white">' . $term->name . '</span>';
-                    echo '</label>';
-                }
                 ?>
+                <label class="filter-option-label w-fit m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:delay-150 before:ease-in-out before:translate-y-[-105%] lg:hover:before:translate-y-0" for="gender_all" onclick="toggleFilter(this);unSelectOthers(this)">
+                    <input type="radio" id="gender_all" name="gender" value="all" class="filter-option-radio" checked>
+                    <span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 lg:group-hover:text-white">Tous</span>
+                </label>
+                <?php
+                foreach ($sex_terms as $term) :
+                ?>
+                    <label class="filter-option-label swiper-slide w-fit m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] lg:hover:before:translate-y-0" for="gender_<?= $term->slug ?>" onclick="toggleFilter(this);unSelectAll(this)">
+                        <input type="checkbox" id="gender_<?= $term->slug ?>" name="gender" value="<?= $term->slug ?>" class="filter-option-radio hidden">
+                        <span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 lg:group-hover:text-white"><?= $term->name ?></span>
+                    </label>
+                    <?php
+                endforeach;
+                ?>
+                </div>
             </div>
         </div>
-        <div class="product-filters-row flex flex-col py-4 border-b border-deep-green">
+        <div class="product-filters-row flex flex-col py-4 relative before:content-[''] before:block before:absolute before:bottom-0 before:w-11/12 before:left-4 before:h-px before:bg-deep-green">
             <div class="hidden lg:flex lg:flex-row lg:justify-between lg:items-center">
                 <p class="mb-2 font-title text-sm font-bold uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150">Type de produit</p>
                 <button class="product-filters-toggle inline-block group relative w-[20px] h-[20px]" onclick="toggleFilterRow(this)">
@@ -69,22 +75,26 @@ get_header(); ?>
                     <span class="block w-full h-[2px] bg-deep-green transition-transform duration-300 ease-in-out delay-150 absolute top-1/2 left-0"></span>
                 </button>
             </div>
-            <div class="filter-options">
+            <div class="filter-options w-full px-2 lg:px-0" data-id="2">
+                <div class="filter-wrapper">
                 <?php
                 $categories = get_terms([
                     'taxonomy' => 'product_cat',
                     'hide_empty' => true,
                 ]);
-                foreach ($categories as $category) {
-                    echo '<label class="filter-option-label m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[\'\'] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] hover:before:translate-y-0" for="category_' . $category->slug . '" onclick="toggleFilter(this)">';
-                        echo '<input type="checkbox" id="category_' . $category->slug . '" name="product_cat" value="' . $category->slug . '" class="filter-option-radio hidden">';
-                        echo '<span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 group-hover:text-white">' . $category->name . '</span>';
-                    echo '</label>';
-                }
+                foreach ($categories as $category) :
                 ?>
+                    <label class="filter-option-label w-fit m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] lg:hover:before:translate-y-0" for="category_<?= $category->slug ?>" onclick="toggleFilter(this)">
+                        <input type="checkbox" id="category_<?= $category->slug ?>" name="product_cat" value="<?= $category->slug ?>" class="filter-option-radio hidden">
+                        <span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 lg:group-hover:text-white"><?= $category->name ?></span>
+                    </label>
+                    <?php
+                endforeach;
+                ?>
+                </div>
             </div>
         </div>
-        <div class="product-filters-row flex flex-col py-4 border-b border-deep-green">
+        <div class="product-filters-row flex flex-col py-4 relative before:content-[''] before:block before:absolute before:bottom-0 before:w-11/12 before:left-4 before:h-px before:bg-deep-green">
             <div class="hidden lg:flex lg:flex-row lg:justify-between lg:items-center">
                 <p class="mb-2 font-title text-sm font-bold uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150">Taille</p>
                 <button class="product-filters-toggle inline-block group relative w-[20px] h-[20px]" onclick="toggleFilterRow(this)">
@@ -92,22 +102,26 @@ get_header(); ?>
                     <span class="block w-full h-[2px] bg-deep-green transition-transform duration-300 ease-in-out delay-150 absolute top-1/2 left-0"></span>
                 </button>
             </div>
-            <div class="filter-options">
+            <div class="filter-options w-full px-2 lg:px-0" data-id="3">
+                <div class="filter-wrapper">
                 <?php
                 $size_terms = get_terms([
                     'taxonomy' => 'pa_taille',
                     'hide_empty' => true,
                 ]);
-                foreach ($size_terms as $term) {
-                    echo '<label class="filter-option-label m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[\'\'] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] hover:before:translate-y-0" for="size_' . $term->slug . '" onclick="toggleFilter(this)">';
-                        echo '<input type="checkbox" id="size_' . $term->slug . '" name="size" value="' . $term->slug . '" class="filter-option-radio hidden">';
-                        echo '<span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 group-hover:text-white">' . $term->name . '</span>';
-                    echo '</label>';
-                }
+                foreach ($size_terms as $term) :
+                    ?>
+                    <label class="filter-option-label w-fit m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] lg:hover:before:translate-y-0" for="size_<?=  $term->slug ?>" onclick="toggleFilter(this)">
+                        <input type="checkbox" id="size_<?=  $term->slug ?>" name="size" value="<?= $term->slug ?>" class="filter-option-radio hidden">
+                        <span class="filter-option-button font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 lg:group-hover:text-white"><?= $term->name ?></span>
+                    </label>
+                    <?php
+                endforeach;
                 ?>
+                </div>
             </div>
         </div>
-        <div class="product-filters-row flex flex-col py-4 border-b border-deep-green">
+        <div class="product-filters-row flex flex-col py-4 relative before:content-[''] before:block before:absolute before:bottom-0 before:w-11/12 before:left-4 before:h-px before:bg-deep-green">
             <div class="hidden lg:flex lg:flex-row lg:justify-between lg:items-center">
                 <p class="mb-2 font-title text-sm font-bold uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150">Couleurs</p>
                 <button class="product-filters-toggle inline-block group relative w-[20px] h-[20px]" onclick="toggleFilterRow(this)">
@@ -115,7 +129,8 @@ get_header(); ?>
                     <span class="block w-full h-[2px] bg-deep-green transition-transform duration-300 ease-in-out delay-150 absolute top-1/2 left-0"></span>
                 </button>
             </div>
-            <div class="filter-options">
+            <div class="filter-options w-full px-2 lg:px-0" data-id="4">
+                <div class="filter-wrapper">
                 <?php
                 $color_terms = get_terms([
                     'taxonomy' => 'pa_couleur',
@@ -124,18 +139,19 @@ get_header(); ?>
                 foreach ($color_terms as $term) {
                     $colorOne = get_field('color_rgb', $term->taxonomy . '_' . $term->term_id);
                     ?>
-                    <label class="filter-option-label filter-option-color m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out hover:before:scale-x-125 hover:before:scale-y-150" for="color_<?= $term->slug ?>" onclick="toggleFilter(this)" style="<?php if ($colorOne) { echo 'background-color: ' . $colorOne . ';'; } ?>)">
-                        <input type="checkbox" id="color_<?= $term->slug ?>" name="color" value="' . $term->slug . '" class="filter-option-radio">
+                    <label class="filter-option-label filter-option-color m-1.5 py-2.5 px-5 w-[15px] h-[10px] border border-deep-green inline-block cursor-pointer relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out lg:hover:before:scale-x-125 lg:hover:before:scale-y-150" for="color_<?= $term->slug ?>" onclick="toggleFilter(this)" style="<?php if ($colorOne) { echo 'background-color: ' . $colorOne . ';'; } ?>)">
+                        <input type="checkbox" id="color_<?= $term->slug ?>" name="color" value="<?= $term->slug ?>" class="filter-option-radio">
                     </label>
                 <?php
                 }
                 ?>
+                </div>
             </div>
         </div>
         <div class="product-filters-row flex flex-col py-4">
             <div class="filter-options filter-options-promo">
-                <label class="filter-option-label m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] hover:before:translate-y-0" for="promoFilter" onclick="toggleFilter(this)">
-                    <span class="filter-option-button inline-block font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 group-hover:text-white">Bon Plans</span>
+                <label class="filter-option-label m-1.5 py-2.5 px-5 border border-deep-green inline-block cursor-pointer overflow-hidden group relative before:content-[''] before:block before:absolute before:inset-0 before:bg-light-green before:z-[-1] before:transition-all before:duration-300 before:ease-in-out before:translate-y-[-105%] lg:hover:before:translate-y-0" for="promoFilter" onclick="toggleFilter(this)">
+                    <span class="filter-option-button inline-block font-title text-xxs uppercase text-deep-green transition-colors duration-300 ease-in-out delay-150 lg:group-hover:text-white">Bon Plans</span>
                     <input type="radio" id="promoFilter" name="bon_plans" value="1" class="filter-option-radio hidden">
                 </label>
             </div>
@@ -147,7 +163,7 @@ get_header(); ?>
             <button id="reset-filters" class="font-title uppercase text-light-green underline text-xs transition-colors duration-300 ease-in-out delay-150 hover:text-deep-green">Réinitialiser les filtres</button>
         </div>
     </div>
-    <div class="products-grid list-none lg:flex lg:flex-row lg:flex-wrap lg:flex-center lg:justify-evenly lg:w-3/4">
+    <div class="products-grid list-none lg:px-4 flex flex-row flex-wrap flex-center justify-evenly w-full lg:w-3/4">
         <?php
         $args = array(
             'post_type' => 'product',
@@ -172,7 +188,7 @@ get_header(); ?>
 
 <div id="ajaxLoader" class="loader-container" style="display: none;">
     <div class="wrapper">
-        <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/bideantrail-loader.webp" alt="Loading..." class="loader" />
+        <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/bideantrail-loader.webp" alt="Loading..." class="loader m-auto" />
     </div>
 </div>
 

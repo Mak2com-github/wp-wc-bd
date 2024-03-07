@@ -54,8 +54,10 @@ Text Domain: mak2com
     right: 1rem;
     top: 25%;
 }
-.eyed-cursor:hover {
-    cursor: url('./assets/img/lookup-cursor.png'), auto;
+@media screen and (min-width: 1024px) {
+    .eyed-cursor:hover {
+        cursor: url('./assets/img/lookup-cursor.png'), auto;
+    }
 }
 .clip-hexagon:before {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -155,6 +157,11 @@ Text Domain: mak2com
     100% {
         transform: rotate(360deg) scale(1);
     }
+}
+
+.cart_sidebar_widget.active {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 /* HEADER */
@@ -395,21 +402,24 @@ Text Domain: mak2com
 }
 
 /* Shop - Filters */
-.filter-options:not(.filter-options-promo) {
-    overflow: hidden;
-    height: 0;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
+@media screen and (min-width: 1024px) {
+    .filter-options:not(.filter-options-promo) {
+        overflow: hidden;
+        height: 0;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+    }
+    .filter-options:not(.filter-options-promo).active {
+        height: 100%;
+        opacity: 1;
+    }
 }
-.filter-options:not(.filter-options-promo).active {
-    height: 100%;
-    opacity: 1;
-}
+
 .filter-option-radio {
     display: none;
 }
 .filter-option-label:not(.filter-option-promo).active:before {
-    transform: translateX(0);
+    transform: translateY(0);
 }
 .filter-option-label:not(.filter-option-promo).active .filter-option-button {
     color: var(--classic-white);

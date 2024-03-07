@@ -14,4 +14,13 @@
             <?php get_template_part('template-parts/header/header-sub'); ?>
         </header>
         <?= do_shortcode('[quote_popup]'); ?>
+        <?php
+        if ( function_exists( 'the_widget' ) ) {
+            $custom_args = array(
+                'before_title' => '<h2 class="font-title text-black font-medium uppercase text-l py-4">',
+                'after_title' => '</h2>',
+            );
+            the_widget( 'Cart_Sidebar_Widget', array('title' => 'Mon panier'), $custom_args );
+        }
+        ?>
         <div id="content">

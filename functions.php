@@ -44,6 +44,8 @@ function mak2com_theme_widgets_init() {
 }
 add_action('widgets_init', 'mak2com_theme_widgets_init');
 
+include get_template_directory() . '/includes/class-cart-sidebar-widget.php';
+
 // Hooks
 add_filter( 'upload_mimes', 'mak2com_mime_types' );
 add_filter( 'wp_check_filetype_and_ext', 'mak2com_file_types', 10, 4 );
@@ -311,3 +313,27 @@ function load_more_products(){
 
 add_action('wp_ajax_load_more_products', 'load_more_products');
 add_action('wp_ajax_nopriv_load_more_products', 'load_more_products');
+
+function custom_ajax_add_to_cart_handler() {
+    if (!wp_verify_nonce($_POST['add_to_cart_nonce'], 'add-to-cart-nonce')) {
+        wp_send_json_error('Nonce verification failed', 400);
+        return;
+    }
+    $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+    $variation_id = isset($_POST['variation_id']) ? intval($_POST['variation_id']) : 0;
+    if (!$product_id) {
+        wp_send_json_error('Invalid product ID', 400);
+        return;
+    }
+    $quantity = 1;
+
+    $cart = WC()->cart;
+    $cart_item_key = $cart->add_to_cart($product_id, $quantity, $variation_id);
+    if ($cart_item_key) {
+        wp_send_json_success(['message' => 'Product successfully added to cart']);
+    } else {
+        wp_send_json_error('Failed to add the product to the cart', 400);
+    }
+}
+add_action('wp_ajax_woocommerce_ajax_add_to_cart', 'custom_ajax_add_to_cart_handler');
+add_action('wp_ajax_nopriv_woocommerce_ajax_add_to_cart', 'custom_ajax_add_to_cart_handler');
