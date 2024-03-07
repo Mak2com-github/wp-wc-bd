@@ -8,8 +8,7 @@ function mak2com_theme_enqueue_styles() {
     wp_enqueue_script('swiperjs', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
     wp_enqueue_script('mak2com-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0', true);
     wp_enqueue_script('mak2com-swipers', get_stylesheet_directory_uri() . '/assets/js/swipers.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('mak2com-quotes', get_stylesheet_directory_uri() . '/assets/js/quotations.js', array('jquery'), '1.0', true);
-
+    wp_enqueue_script('mak2com-ajax', get_stylesheet_directory_uri() . '/assets/js/ajax.js', array(), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'mak2com_theme_enqueue_styles');
 
@@ -222,3 +221,93 @@ function custom_breadcrumb($param = '') {
     }
     echo '</div>';
 }
+
+function filter_products() {
+    $filters = json_decode(stripslashes($_POST['filters']), true);
+    $paged = isset($_POST['page']) ? absint($_POST['page']) : 1;
+    $args = [
+        'post_type' => 'product',
+        'posts_per_page' => 9,
+        'post_status' => 'publish',
+        'paged' => $paged,
+        'tax_query' => [
+            'relation' => 'OR',
+        ]
+    ];
+
+    if (!empty($filters['gender']) && $filters['gender'] !== 'all') {
+        $args['tax_query'][] = [
+            'taxonomy' => 'pa_sexe',
+            'field'    => 'slug',
+            'terms'    => $filters['gender'],
+            'operator' => 'IN',
+        ];
+    }
+    if (!empty($filters['product_cat'])) {
+        $categories = is_array($filters['product_cat']) ? $filters['product_cat'] : [$filters['product_cat']];
+        $args['tax_query'][] = [
+            'taxonomy' => 'product_cat',
+            'field'    => 'slug',
+            'terms'    => $categories,
+            'operator' => 'IN',
+        ];
+    }
+    if (!empty($filters['size'])) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'pa_taille',
+            'field'    => 'slug',
+            'terms'    => $filters['size'],
+            'operator' => 'IN',
+        ];
+    }
+    if (!empty($filters['color'])) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'pa_couleur',
+            'field'    => 'slug',
+            'terms'    => $filters['color'],
+            'operator' => 'IN',
+        ];
+    }
+
+
+    $query = new WP_Query($args);
+    $html = '';
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()): $query->the_post();
+            ob_start();
+            wc_get_template_part('content', 'product');
+            $html .= ob_get_clean();
+        endwhile;
+    endif;
+    wp_reset_postdata();
+
+    $maxPages = $query->max_num_pages;
+    echo json_encode(['html' => $html, 'maxPages' => $maxPages]);
+    wp_die();
+}
+
+add_action('wp_ajax_filter_products', 'filter_products');
+add_action('wp_ajax_nopriv_filter_products', 'filter_products');
+
+function load_more_products(){
+    $paged = $_POST['page'] + 1;
+
+    $args = array(
+        'post_type' => 'product',
+        'paged' => $paged,
+        'posts_per_page' => 6,
+    );
+
+    $query = new WP_Query($args);
+
+    if($query->have_posts()) :
+        while($query->have_posts()): $query->the_post();
+            wc_get_template_part('content', 'product');
+        endwhile;
+    endif;
+    die;
+}
+
+add_action('wp_ajax_load_more_products', 'load_more_products');
+add_action('wp_ajax_nopriv_load_more_products', 'load_more_products');

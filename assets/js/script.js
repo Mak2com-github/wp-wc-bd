@@ -89,6 +89,7 @@ function toggleBurgerMenu(body) {
     })
 }
 function fixedHeaderOnScroll() {
+    const body = document.querySelector('body')
     const header = document.querySelector('header')
     const headerHeight = header.offsetHeight;
     window.addEventListener('scroll', function() {
@@ -97,7 +98,9 @@ function fixedHeaderOnScroll() {
             header.classList.add('fixed')
             header.classList.add('animate__in')
             header.classList.remove('animate__out')
+            body.style.paddingTop = headerHeight + "px"
         } else {
+            body.style.paddingTop = "0"
             header.classList.remove('fixed')
             header.classList.add('relative')
             header.classList.remove('animate__in')
@@ -136,7 +139,6 @@ function subMenuContainer() {
 function productConfigurationForm() {
     document.querySelectorAll('input[type="radio"]').forEach(input => {
         input.addEventListener('change', function() {
-            console.log()
             document.querySelectorAll('input[type="radio"][name="'+ input.name +'"]').forEach(input => {
                 input.removeAttribute('checked')
                 input.parentElement.classList.remove('bg-light-green-opacity')
@@ -200,6 +202,33 @@ function moveImageSection() {
         }
     }
 }
+function toggleFilter(labelElement) {
+    var input = labelElement.querySelector('.filter-option-radio');
+    if (input.checked) {
+        labelElement.classList.add('active');
+    } else {
+        labelElement.classList.remove('active');
+    }
+}
+function toggleFilterRow(element) {
+    var parent = element.parentNode.parentNode;
+    var filtersContainer = parent.querySelector('.filter-options');
+    if (element.classList.contains('active')) {
+        element.classList.remove('active');
+        filtersContainer.classList.remove('active');
+    } else {
+        element.classList.add('active');
+        filtersContainer.classList.add('active');
+    }
+}
+function toggleRapidFilters(labelElement) {
+    var input = labelElement.querySelector('.rapid-filter-size');
+    if (input.checked) {
+        labelElement.classList.add('active');
+    } else {
+        labelElement.classList.remove('active');
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     let body = document.querySelector("body");
@@ -218,5 +247,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (body.classList.contains('single-produit-pro')) {
         productConfigurationForm()
         productConfigurationInfosBox()
+    }
+    if (body.classList.contains('post-type-archive-product')) {
+        document.querySelectorAll('.filter-option-radio').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                toggleFilter(this.parentNode);
+            });
+        });
+        document.querySelectorAll('.rapid_variations_form').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var selectedSize = this.querySelector('input[name="variation_size"]:checked');
+                var errorMsg = this.closest('.relative').querySelector('.product-error-msg');
+                if (!selectedSize) {
+                    if (errorMsg) {
+                        errorMsg.textContent = 'Veuillez choisir une taille avant d\'ajouter au panier.';
+                        errorMsg.classList.add('!translate-y-0');
+                        return;
+                    }
+                }
+                if (errorMsg) {
+                    errorMsg.textContent = '';
+                    errorMsg.classList.remove('!translate-y-0');
+                }
+            });
+        });
     }
 })

@@ -37,7 +37,7 @@ $current_term = get_queried_object();
                             <div class="absolute z-[1] -inset-1 bg-deep-green blur-sm opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"></div>
                             <div class="relative h-full z-[2] lg:flex lg:flex-col lg:justify-between">
                                 <h2 class="font-title uppercase text-xl font-black *:font-light text-deep-green transition-colors duration-300 ease-in-out group-hover:text-white leading-6 mb-4 text-center"><?php the_title(); ?></h2>
-                                <div class="flex flex-col justify-center h-[80%] lg:h-auto lg:block my-auto *:max-h-[190px] max-w-[230px] lg:*:max-w-[200px] *:w-auto *:mx-auto">
+                                <div class="flex flex-col justify-center h-[80%] xl:w-full lg:h-auto lg:block my-auto *:max-h-[190px] max-w-[230px] lg:*:max-w-[200px] xl:max-w-[100%] *:w-auto *:mx-auto">
                                     <?php the_post_thumbnail('medium') ?>
                                 </div>
                             </div>

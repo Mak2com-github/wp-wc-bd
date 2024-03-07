@@ -115,6 +115,48 @@ Text Domain: mak2com
         opacity: 1;
     }
 }
+
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 80;
+}
+.loader-container .wrapper {
+    width: 200px;
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.loader-container .wrapper .loader {
+    width: 50px;
+    animation: spinZoomInOut 1.5s linear infinite;
+}
+
+@keyframes spinZoomInOut {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(90deg) scale(1.2);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.5);
+    }
+    75% {
+        transform: rotate(270deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
 /* HEADER */
 @media screen and (max-width: 1024px) {
     .header-logo img {
@@ -350,4 +392,48 @@ Text Domain: mak2com
 }
 .footer-nav-container .menu-item a:hover {
     color: var(--deep-green);
+}
+
+/* Shop - Filters */
+.filter-options:not(.filter-options-promo) {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.filter-options:not(.filter-options-promo).active {
+    height: 100%;
+    opacity: 1;
+}
+.filter-option-radio {
+    display: none;
+}
+.filter-option-label:not(.filter-option-promo).active:before {
+    transform: translateX(0);
+}
+.filter-option-label:not(.filter-option-promo).active .filter-option-button {
+    color: var(--classic-white);
+}
+.filter-option-color:not(.filter-option-promo).active:before {
+    transform: scale(1.25, 2);
+}
+.filter-option-button {
+    display: block;
+}
+
+.product-filters-row .product-filters-toggle span:nth-child(0n+1) {
+    transform: translateY(50%);
+}
+.product-filters-row .product-filters-toggle span:nth-child(0n+2) {
+    transform: translateY(50%) rotate(90deg);
+}
+.product-filters-row .product-filters-toggle.active span:nth-child(0n+1) {
+    transform: rotate(-180deg) !important;
+}
+.product-filters-row .product-filters-toggle.active span:nth-child(0n+2) {
+    transform: rotate(0deg) !important;
+}
+
+.rapid-filter-cart.active span {
+    font-weight: 800;
 }

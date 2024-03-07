@@ -67,9 +67,9 @@ get_header();
 
                 if (!empty($image['url'])) {
                     ?>
-                    <div class="absolute lg:static top-[222px] lg:top-auto left-0 w-1/2 h-[250px] bg-cover bg-no-repeat bg-center lg:block lg:my-auto" style="background-image: url('<?= $image['url'] ?>')"></div>
+                    <div class="absolute lg:static top-[222px] lg:top-auto left-0 w-1/2 h-[250px] lg:h-[300px] bg-cover bg-no-repeat bg-center lg:block lg:my-auto" style="background-image: url('<?= $image['url'] ?>')"></div>
                 <?php } ?>
-                <div class="flex flex-col w-full px-4 py-8 lg:w-[45%] lg:pr-[5%]">
+                <div class="flex flex-col w-full px-4 py-8 lg:w-[45%] lg:pr-[5%] xl:pr-[15%]">
                     <h2 class="w-fit relative mx-auto lg:ml-0 mb-8 block font-title text-deep-green text-center text-xl2 font-black uppercase pb-1 leading-6 border-b-2 border-light-green span-light after:content-[''] after:absolute after:h-0 after:border-l-4 after:border-l-transparent after:border-r-4 after:border-r-transparent after:border-b-8 after:border-b-light-green after:right-0 after:top-0"><?php if (!empty($title)) echo $title; ?></h2>
                     <div class="font-sans text-black text-xs bideantrail-section-list">
                         <?php if (!empty($text)) echo $text; ?>
